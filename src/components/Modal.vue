@@ -24,10 +24,10 @@ const resetFilter = () => {
 <template>
   <Teleport to="body">
     <div
-      class="w-full bg-bg-primary-invert/60 flex justify-center items-center absolute inset-0 overflow-hidden"
+      class="w-full bg-bg-primary-invert/60 flex justify-center items-center absolute inset-0 overflow-hidden px-4"
     >
       <div
-        class="bg-bg-primary w-2/3 h-[600px] rounded-lg p-4 flex flex-col gap-2"
+        class="bg-bg-primary w-full lg:w-2/3 h-[85%] lg:h-[75%] rounded-lg p-4 flex flex-col gap-2"
       >
         <div class="self-end flex justify-center items-center">
           <button
@@ -38,8 +38,10 @@ const resetFilter = () => {
             <span class="sr-only">Close</span>
           </button>
         </div>
-        <div class="w-full overflow-auto flex gap-6 pt-6 h-full">
-          <div class="!min-w-[40%]">
+        <div
+          class="w-full overflow-auto flex flex-col lg:flex-row gap-6 pt-6 h-full"
+        >
+          <div class="min-w-[40%]">
             <OverallRating
               :data="data?.pages[0]"
               :has-filter="filter !== undefined"
@@ -48,7 +50,7 @@ const resetFilter = () => {
             />
           </div>
 
-          <div class="grow overflow-auto flex" v-if="data">
+          <div class="grow lg:overflow-auto flex" v-if="data">
             <div class="w-full" v-if="!isLoading && data?.pages[0].data.length">
               <div class="mb-8" v-for="page in data?.pages">
                 <ReviewsList v-if="page.data.length" :reviews="page?.data" />
